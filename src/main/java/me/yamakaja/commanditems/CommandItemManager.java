@@ -115,10 +115,15 @@ public class CommandItemManager implements Listener {
             event.getPlayer().sendMessage(ChatColor.RED + "You don't have permission to use this item!");
             return;
         }
-
-        if (!checkCooldown(event.getPlayer(), command, itemDefinition.getCooldown())) {
-            event.getPlayer().sendMessage(ChatColor.RED + "You can only use this item every " + getTimeString(itemDefinition.getCooldown()) + "!");
-            return;
+        if (!itemDefinition.getAlreadyUsed().equals("") && event.getPlayer().hasPermission(itemDefinition.getAlreadyUsed())){
+            event.getPlayer().sendMessage(ChatColor.RED + "You have used this item!");
+        return;
+}
+        after line 118 "if (!event.getPlayer().hasPermission("cmdi.item." + command))"
+                of CommandItemManager.java
+                    if (!checkCooldown(event.getPlayer(), command, itemDefinition.getCooldown())) {
+                 event.getPlayer().sendMessage(ChatColor.RED + "You can only use this item every " + getTimeString(itemDefinition.getCooldown()) + "!");
+         return;
         }
 
         if (itemDefinition.isConsumed()) {
