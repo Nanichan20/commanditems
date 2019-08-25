@@ -43,5 +43,8 @@ public class ItemDefinition {
     public boolean isSneaking() {
         return this.sneaking;
     }
+    private String alreadyUsed;
 
+    public String getAlreadyUsed() {
+    return alreadyUsed;
 }
